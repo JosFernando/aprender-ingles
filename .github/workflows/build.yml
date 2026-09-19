@@ -47,32 +47,18 @@ jobs:
           echo -e "\n24333f8a63b6825ea9c5514f83c2829b004d1fee\nd56f5187479451eabf01fb78af6dfcb131a6481e\n84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-license
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Build Android Debug APK
+      - name: Build Android APK
         working-directory: ./android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee ../gradle.log
-
-      - name: Print Gradle Log on Failure
-        if: always()
-        run: |
-          if [ -f gradle.log ]; then
-            echo "==== GRADLE LOG (LAST 80 LINES) ===="
-            tail -n 80 gradle.log
-          fi
-
-      - name: Upload Gradle Build Log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Gradle-Build-Log
-          path: gradle.log
+        run: ./gradlew :app:assembleDebug :app:assembleRelease --no-daemon --stacktrace
 
       - name: Locate and Collect APKs
         run: |
-          echo "=== SEARCHING FOR APKS ==="
-          find . -name "*.apk"
+          echo "=== SEARCHING FOR ALL APKS ==="
           mkdir -p apks
-          find . -name "*.apk" -exec cp {} apks/ \;
-          ls -la apks/
+          find . -name "*.apk"
+          find . -name "*.apk" -exec cp -v {} apks/ \;
+          echo "=== APKS COLLECTED ==="
+          ls -lh apks/
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
