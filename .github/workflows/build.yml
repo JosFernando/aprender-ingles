@@ -45,11 +45,26 @@ jobs:
         run: |
           mkdir -p $ANDROID_HOME/licenses
           echo -e "\n24333f8a63b6825ea9c5514f83c2829b004d1fee\nd56f5187479451eabf01fb78af6dfcb131a6481e\n84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-license
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "build-tools;35.0.0" || true
+          echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Build Android Debug APK
         working-directory: ./android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee ../gradle.log
+
+      - name: Print Gradle Log on Failure
+        if: always()
+        run: |
+          if [ -f gradle.log ]; then
+            echo "==== GRADLE LOG (LAST 80 LINES) ===="
+            tail -n 80 gradle.log
+          fi
+
+      - name: Upload Gradle Build Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gradle-Build-Log
+          path: gradle.log
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
