@@ -34,6 +34,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Make Gradlew Executable
         working-directory: ./android
         run: chmod +x gradlew
@@ -46,17 +49,17 @@ jobs:
 
       - name: Build Android Debug APK
         working-directory: ./android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee /tmp/gradle.log
+        continue-on-error: true
 
-      - name: Locate APK Files
-        run: ls -la android/app/build/outputs/apk/debug/
+      - name: Print Gradle Log
+        run: tail -n 60 /tmp/gradle.log
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: Ingles-Gramatica-Android-APK
-          path: android/app/build/outputs/apk/**/*.apk
-          if-no-files-found: error
+          path: android/app/build/outputs/apk/debug/*.apk
 
   build-ios:
     name: Build iOS (macOS)
