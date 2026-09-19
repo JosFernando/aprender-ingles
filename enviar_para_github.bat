@@ -36,3 +36,4 @@ echo.
 echo Em cerca de 2 minutos o seu APK estará pronto para download!
 echo =======================================================
 pause
+
