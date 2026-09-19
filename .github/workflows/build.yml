@@ -47,24 +47,26 @@ jobs:
           echo -e "\n24333f8a63b6825ea9c5514f83c2829b004d1fee\nd56f5187479451eabf01fb78af6dfcb131a6481e\n84831b9409646a918e30573bab4c9c91346d8abd" > $ANDROID_HOME/licenses/android-sdk-license
           echo y | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Build Android APK
+      - name: Build Android Debug APK
         working-directory: ./android
-        run: ./gradlew :app:assembleDebug :app:assembleRelease --no-daemon --stacktrace
-
-      - name: Locate and Collect APKs
         run: |
-          echo "=== SEARCHING FOR ALL APKS ==="
+          ./gradlew assembleDebug --no-daemon --stacktrace
+          echo "=== LISTING APP BUILD OUTPUTS ==="
+          find app/build/outputs -type f || true
+
+      - name: Collect All App Packages
+        run: |
           mkdir -p apks
-          find . -name "*.apk"
-          find . -name "*.apk" -exec cp -v {} apks/ \;
-          echo "=== APKS COLLECTED ==="
+          find android -name "*.apk" -exec cp -v {} apks/ \; || true
+          find android -name "*.aab" -exec cp -v {} apks/ \; || true
+          echo "=== APKS AND PACKAGES COLLECTED ==="
           ls -lh apks/
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: Ingles-Gramatica-Android-APK
-          path: apks/*.apk
+          path: apks/*
 
   build-ios:
     name: Build iOS (macOS)
