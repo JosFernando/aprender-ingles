@@ -1,0 +1,30 @@
+node_modules/
+.tools/
+*.zip
+.vscode/
+.idea/
+.gradle/
+dist/
+scratch/
+*.tsbuildinfo
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/app/*.iml
+
+# iOS
+ios/DerivedData/
+ios/Pods/
+ios/App/Pods/
+ios/App/build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log

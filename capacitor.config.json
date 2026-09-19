@@ -1,0 +1,10 @@
+{
+  "appId": "com.inglesfacil.gramatica",
+  "appName": "Inglês & Gramática",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
+
