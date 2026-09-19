@@ -66,11 +66,19 @@ jobs:
           name: Gradle-Build-Log
           path: gradle.log
 
+      - name: Locate and Collect APKs
+        run: |
+          echo "=== SEARCHING FOR APKS ==="
+          find . -name "*.apk"
+          mkdir -p apks
+          find . -name "*.apk" -exec cp {} apks/ \;
+          ls -la apks/
+
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: Ingles-Gramatica-Android-APK
-          path: android/app/build/outputs/apk/debug/*.apk
+          path: apks/*.apk
 
   build-ios:
     name: Build iOS (macOS)
