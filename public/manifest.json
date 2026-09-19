@@ -2,11 +2,17 @@
   "name": "Inglês & Gramática",
   "short_name": "Inglês",
   "description": "Curso interativo de gramática em inglês do A1 ao Avançado, 399 exercícios práticos, regras completas e treino de pronúncia.",
+  "name": "J&I English - Aprender Inglês & Gramática",
+  "short_name": "J&I English",
+  "description": "Curso completo de gramática em inglês do A1 ao Avançado, 399 exercícios práticos, regras completas e treino de pronúncia.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#4f46e5",
   "orientation": "portrait-primary",
+  "background_color": "#0d1b2a",
+  "theme_color": "#0d1b2a",
+  "orientation": "portrait",
   "scope": "/",
   "icons": [
     {

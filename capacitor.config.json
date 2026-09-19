@@ -1,6 +1,7 @@
 {
   "appId": "com.inglesfacil.gramatica",
   "appName": "Inglês & Gramática",
+  "appName": "J&I English",
   "webDir": "dist",
   "bundledWebRuntime": false,
   "server": {

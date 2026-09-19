@@ -32,7 +32,7 @@ export const StatsModal: React.FC<StatsModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 pt-[max(env(safe-area-inset-top,0px),1rem)] pb-[max(env(safe-area-inset-bottom,0px),1rem)] safe-x-padded overflow-y-auto">
       <div className="bg-white rounded-2xl max-w-sm w-full p-4 sm:p-5 border border-slate-200 shadow-xl max-h-[90vh] overflow-y-auto my-auto">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">

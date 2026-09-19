@@ -26,7 +26,7 @@ export const SimulatorFrame: React.FC<SimulatorFrameProps> = ({
 
   if (!isSimulator || isMobileScreen) {
     return (
-      <div className="h-screen max-h-screen bg-white text-slate-900 flex flex-col w-full overflow-hidden">
+      <div className="h-[100dvh] max-h-[100dvh] bg-white text-slate-900 flex flex-col w-full overflow-hidden">
         {!isMobileScreen && (
           <div className="bg-slate-50 text-slate-600 px-4 py-2 text-xs flex items-center justify-between border-b border-slate-200 flex-shrink-0 z-40">
             <div className="flex items-center gap-2">

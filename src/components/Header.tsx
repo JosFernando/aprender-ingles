@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Flame, Zap, BarChart2, Smartphone, Monitor } from 'lucide-react';
+import { Flame, Zap, BarChart2, Smartphone, Monitor } from 'lucide-react';
 import { UserProgress } from '../types/grammar';
 
 interface HeaderProps {
@@ -18,24 +18,19 @@ export const Header: React.FC<HeaderProps> = ({
   onHomeClick,
 }) => {
   return (
-    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-3 sm:px-4 py-2.5 flex-shrink-0 shadow-2xs">
+    <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-3 sm:px-4 pt-[max(env(safe-area-inset-top,0px),0.625rem)] pb-2.5 flex-shrink-0 shadow-2xs safe-x-padded">
       <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
         {/* Brand */}
         <button 
           onClick={onHomeClick}
-          className="flex items-center gap-2 text-left group min-w-0 flex-shrink transition-opacity hover:opacity-90"
+          className="flex items-center gap-2 text-left group min-w-0 flex-shrink transition-opacity hover:opacity-90 active:scale-98"
+          title="Início"
         >
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-600 flex items-center justify-center text-white flex-shrink-0 shadow-xs shadow-indigo-600/20">
-            <BookOpen className="w-4 h-4 text-white" />
-          </div>
-          <div className="min-w-0">
-            <span className="font-extrabold text-xs sm:text-sm tracking-tight text-slate-900 block truncate">
-              Inglês <span className="text-indigo-600 font-bold">& Gramática</span>
-            </span>
-            <span className="text-[10px] text-slate-400 font-medium hidden xs:block">
-              Teoria & Prática
-            </span>
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="J&I English" 
+            className="h-8 sm:h-9 w-auto max-w-[150px] sm:max-w-[200px] object-contain flex-shrink-0"
+          />
         </button>
 
         {/* Metrics & Actions */}

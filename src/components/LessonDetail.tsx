@@ -55,7 +55,7 @@ export const LessonDetail: React.FC<LessonDetailProps> = ({
         MENU E TEMA FIXOS NO TOPO
         Permanece sempre visível durante a rolagem de todo o resto do conteúdo
       */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs flex-shrink-0">
+      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs flex-shrink-0 pt-[max(env(safe-area-inset-top,0px),0.625rem)] safe-x-padded">
         {/* Linha 1: Voltar + Tema da Lição + Praticar rápido */}
         <div className="px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 max-w-4xl mx-auto w-full">
           <button
@@ -438,13 +438,13 @@ export const LessonDetail: React.FC<LessonDetailProps> = ({
           )}
 
           {/* Chamada para Ação ao Final da Leitura */}
-          <div className="pt-2 pb-6">
+          <div className="pt-2 pb-[max(env(safe-area-inset-bottom,0px),1.75rem)] safe-x-padded">
             <button
               onClick={onStartExercises}
               className="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-indigo-600/20 active:scale-98 min-h-[46px]"
             >
               <Play className="w-4 h-4 fill-current" />
-              <span>Iniciar Exercícios ({lesson.exercises.length} disponíveis)</span>
+              <span>Praticar ({lesson.exercises.length})</span>
             </button>
           </div>
         </div>

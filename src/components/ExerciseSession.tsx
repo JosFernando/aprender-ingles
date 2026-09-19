@@ -185,7 +185,7 @@ export const ExerciseSession: React.FC<ExerciseSessionProps> = ({
     const xpEarned = Math.round(finalScore * 1.5) + 30;
 
     return (
-      <div className="h-full min-h-0 bg-slate-50 flex flex-col items-center justify-center p-4 sm:p-6 overflow-y-auto w-full">
+      <div className="h-full min-h-0 bg-slate-50 flex flex-col items-center justify-center p-4 sm:p-6 pt-[max(env(safe-area-inset-top,0px),1rem)] pb-[max(env(safe-area-inset-bottom,0px),1.5rem)] safe-x-padded overflow-y-auto w-full">
         <div className="max-w-sm w-full bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-xl text-center my-auto space-y-4">
           <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-white flex items-center justify-center shadow-md shadow-amber-500/20">
             <Trophy className="w-7 h-7 text-white" />
@@ -257,7 +257,7 @@ export const ExerciseSession: React.FC<ExerciseSessionProps> = ({
   return (
     <div className="h-full min-h-0 bg-slate-50/60 flex flex-col justify-between w-full overflow-hidden">
       {/* Top Header */}
-      <div className="bg-white border-b border-slate-200/80 px-4 sm:px-6 py-2.5 sticky top-0 z-20 flex-shrink-0 shadow-2xs">
+      <div className="bg-white border-b border-slate-200/80 px-4 sm:px-6 pt-[max(env(safe-area-inset-top,0px),0.625rem)] pb-2.5 sticky top-0 z-20 flex-shrink-0 shadow-2xs safe-x-padded">
         <div className="max-w-2xl mx-auto flex items-center gap-3 sm:gap-4">
           <button
             onClick={onClose}
@@ -540,7 +540,7 @@ export const ExerciseSession: React.FC<ExerciseSessionProps> = ({
       </div>
 
       {/* Bottom Action Bar - Short Button "Verificar", "Seguinte" ou "Resultados" */}
-      <div className="p-3.5 sm:p-4 bg-white border-t border-slate-200/80 flex-shrink-0 shadow-lg z-30">
+      <div className="p-3.5 sm:p-4 pb-[max(env(safe-area-inset-bottom,0px),1.25rem)] bg-white border-t border-slate-200/80 flex-shrink-0 shadow-lg z-30 safe-x-padded">
         <div className="max-w-2xl mx-auto w-full space-y-2.5">
           {isAnswerChecked && (
             <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">

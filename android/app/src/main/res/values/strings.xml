@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Inglês &amp; Gramática</string>
     <string name="title_activity_main">Inglês &amp; Gramática</string>
+    <string name="app_name">J&amp;I English</string>
+    <string name="title_activity_main">J&amp;I English</string>
     <string name="package_name">com.inglesfacil.gramatica</string>
     <string name="custom_url_scheme">com.inglesfacil.gramatica</string>
 </resources>
